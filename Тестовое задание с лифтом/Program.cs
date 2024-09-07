@@ -13,12 +13,14 @@ namespace Тестовое_задание_с_лифтом
             var elevator1 = new ElevatorCabin();
             var elevator2 = new ElevatorCabin();
 
-            var flors = new List<Floor>();
-            for (int i = 1; i <= 20; i++) 
+            var Floors = new List<Floor>();
+
+            for (int i = 1; i <= 20; i++)
             {
-                flors.Add( new Floor ());
+                Floors.Add(new Floor(i));
             }
             Console.WriteLine();
+
 
         }
     }
