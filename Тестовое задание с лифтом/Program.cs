@@ -1,27 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Тестовое_задание_с_лифтом
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            var elevator1 = new ElevatorCabin();
-            var elevator2 = new ElevatorCabin();
+            List<Lift> lifts = new List<Lift>();
+            List<Floor> floors = new List<Floor>();
 
-            var Floors = new List<Floor>();
+            // Create 2 lifts and 20 floors
 
-            for (int i = 1; i <= 20; i++)
+            for (int i = 0; i < 2; i++)
             {
-                Floors.Add(new Floor(i));
+                lifts.Add(new Lift());
             }
-            Console.WriteLine();
 
+            for (int i = 0; i < 20; i++)
+            {
+                floors.Add(new Floor(i + 1, lifts));
+            }
 
+            // Simulate passenger actions
+            floors[0].CallLift();
+            floors[0].SendLift(14);
+
+            floors[14].CallLift();
+            floors[14].SendLift(1);
         }
     }
 }
