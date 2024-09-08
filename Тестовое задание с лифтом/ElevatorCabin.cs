@@ -8,26 +8,30 @@ namespace Тестовое_задание_с_лифтом
 {
     public class ElevatorCabin
     {
-        public int CurrentFloor { get; set; }
+        public int CurrentFloor { get; set; } = 1;
         public bool GoingUp { get; set; } = false;
         public bool GoingDown { get; set; } = false;
         public bool OpensTheDoors { get; set; } = false;
         public bool ClosesTheDoors { get; set; } = false;
         public bool ItStandsWithTheDoorsOpen { get; set; } = false;
+        public bool Free { get; set; }
 
         public bool Busy()
         {
-            if (GoingUp||GoingDown|| OpensTheDoors|| ClosesTheDoors|| ItStandsWithTheDoorsOpen)
+            if (GoingUp || GoingDown || OpensTheDoors || ClosesTheDoors || ItStandsWithTheDoorsOpen)
             {
                 return true;
             }
-                return false;
+            return false;
         }
 
 
-        public void PressTheFloorButton(int floor) 
+        public void PressTheFloorButton(int floor)
         {
             Console.WriteLine($"Нажали кнопку этажа {floor}");
+            ArriveAtTheDesiredFloor(floor);
+
+                  
         }
         public void PressTheDoorClosingButton()
         {
@@ -49,6 +53,41 @@ namespace Тестовое_задание_с_лифтом
         {
             Console.WriteLine($"Датчик кабины фиксирует отсутствие движения между дверьми");
         }
-        
+
+        public void ArriveAtTheDesiredFloor(int floor)
+        {
+            PressTheFloorButton(floor);
+
+            if (floor == CurrentFloor)
+            {
+                TheElevatorIsInPlace(floor);
+            }
+
+            else if (floor > CurrentFloor)
+            {
+                TheCabinSensorDetectsTheAbsenceOfMovementBetweenTheDoors();
+                PressTheDoorClosingButton();
+                GoingUp = true;
+                CurrentFloor = floor;
+                GoingUp = false;
+                TheElevatorIsInPlace(floor);
+            }
+
+            else if (floor < CurrentFloor)
+            {
+                TheCabinSensorDetectsTheAbsenceOfMovementBetweenTheDoors();
+                PressTheDoorClosingButton();
+                GoingDown = true;
+                CurrentFloor = floor;
+                GoingDown = false;
+                TheElevatorIsInPlace(floor);
+            }
+        }
+        public void TheElevatorIsInPlace(int floor)
+        {
+            Console.WriteLine($"Лифт на месте. Приехал на {floor} этаж ");
+            OpensTheDoors = true;
+            ItStandsWithTheDoorsOpen = true;
+        }
     }
 }

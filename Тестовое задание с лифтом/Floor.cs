@@ -12,12 +12,16 @@ namespace Тестовое_задание_с_лифтом
         { 
             ThisFloor = floor;
         }
+        public SystemElevator SystemElevator { get; set; } = new SystemElevator();
         public int ThisFloor { get; set; }
-        public int TheCurrentFloorOfTheCabinIs1 { get; set; }
-        public int CurrentStatusOfCabin1 { get; set; }
+        public int TheCurrentFloorOfTheCabinIs1 { get; set; } 
+        public bool CurrentStatusOfCabin1 { get; set; }
         public int TheCurrentFloorOfTheCabinIs2 { get; set; }
-        public int CurrentStatusOfCabin2 { get; set; }
+        public bool CurrentStatusOfCabin2 { get; set; }
         public int StatusOfTheElevatorCallButton { get; set; }
-        public void PressTheElevatorCallButton() { }
+        public void PressTheElevatorCallButton() 
+        {
+            SystemElevator.CallingTheElevator(ThisFloor);
+        }
     }
 }
