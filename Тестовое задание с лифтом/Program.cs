@@ -29,19 +29,35 @@ namespace Тестовое_задание_с_лифтом
                 floor.CurrentStatusOfCabin2 = !(floor.SystemElevator.ElevatorCabin2.Busy());
             }
 
-            var floor1 = Floors.First(f=>f.ThisFloor==1);
-            floor1.PressTheElevatorCallButton();
-            Console.WriteLine("Люди зашли в лифт");
-            systemElevator.ElevatorCabin1.PressTheFloorButton(14);
-            Console.WriteLine("Люди вышли из лифта");
-            var floor15 = Floors.First(f => f.ThisFloor == 15);
-            floor15.PressTheElevatorCallButton();
-            systemElevator.ElevatorCabin1.PressTheFloorButton(1);
+            Passenger(Floors, systemElevator, 1, 14);
+            Passenger(Floors, systemElevator, 15, 1);
 
 
             Console.WriteLine();
 
 
+        }
+        public static void Passenger(List<Floor> Floors,
+            SystemElevator systemElevator,
+            int WhichFloorIsTheSignalFrom,
+            int WhereWillTheElevatorGo)
+        {
+            if ((WhichFloorIsTheSignalFrom < 1 || WhichFloorIsTheSignalFrom > 20)
+                || (WhereWillTheElevatorGo < 1 || WhereWillTheElevatorGo > 20))
+            {
+                Console.WriteLine("Вы что то ввели не то");
+            }
+            else 
+            {
+                var floor1 = Floors.First(f => f.ThisFloor == WhichFloorIsTheSignalFrom);
+                floor1.PressTheElevatorCallButton();
+                Console.WriteLine("Люди зашли в лифт");
+                systemElevator.ElevatorCabin1.PressTheFloorButton(WhereWillTheElevatorGo);
+                Console.WriteLine("Люди вышли из лифта");
+                var floor15 = Floors.First(f => f.ThisFloor == WhichFloorIsTheSignalFrom);
+                floor15.PressTheElevatorCallButton();
+                systemElevator.ElevatorCabin1.PressTheFloorButton(WhereWillTheElevatorGo);
+            }            
         }
     }
 }
