@@ -56,7 +56,6 @@ namespace Тестовое_задание_с_лифтом
 
         public void ArriveAtTheDesiredFloor(int floor)
         {
-            PressTheFloorButton(floor);
 
             if (floor == CurrentFloor)
             {

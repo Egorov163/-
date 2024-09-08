@@ -33,8 +33,12 @@ namespace Тестовое_задание_с_лифтом
             floor1.PressTheElevatorCallButton();
             Console.WriteLine("Люди зашли в лифт");
             systemElevator.ElevatorCabin1.PressTheFloorButton(14);
+            Console.WriteLine("Люди вышли из лифта");
+            var floor15 = Floors.First(f => f.ThisFloor == 15);
+            floor15.PressTheElevatorCallButton();
+            systemElevator.ElevatorCabin1.PressTheFloorButton(1);
 
-            
+
             Console.WriteLine();
 
 
