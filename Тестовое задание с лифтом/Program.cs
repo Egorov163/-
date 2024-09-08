@@ -6,8 +6,8 @@ namespace Тестовое_задание_с_лифтом
     {
         static void Main(string[] args)
         {
-            List<Lift> lifts = new List<Lift>();
-            List<Floor> floors = new List<Floor>();
+            var lifts = new List<Lift>();
+            var floors = new List<Floor>();
 
             // Create 2 lifts and 20 floors
 
