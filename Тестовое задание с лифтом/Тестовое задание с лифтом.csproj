@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ElevatorCabin.cs" />
+    <Compile Include="Elevator.cs" />
+    <Compile Include="ElevatorState.cs" />
+    <Compile Include="ElevatorSystem.cs" />
     <Compile Include="Floor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

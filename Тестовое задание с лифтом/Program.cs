@@ -6,22 +6,32 @@ using System.Threading.Tasks;
 
 namespace Тестовое_задание_с_лифтом
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            var elevator1 = new ElevatorCabin();
-            var elevator2 = new ElevatorCabin();
+            var system = new ElevatorSystem();
+            var passengers = new List<(string, int, int)>
+        {
+            ("Пассажир 1", 1, 14),
+            ("Пассажир 2", 15, 1)
+        };
 
-            var Floors = new List<Floor>();
-
-            for (int i = 1; i <= 20; i++)
+            foreach (var passenger in passengers)
             {
-                Floors.Add(new Floor(i));
+                try
+                {
+                    system.SimulatePassengers(passenger.Item1, passenger.Item2, passenger.Item3);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    continue;
+                }
             }
-            Console.WriteLine();
 
-
+            Console.WriteLine($"{Environment.NewLine}Симуляция завершена. Нажмите любую клавишу для выхода.");
+            Console.ReadKey();
         }
     }
 }
